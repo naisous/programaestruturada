@@ -90,4 +90,4 @@ printf("Total de paes e broas vendidas: %i", paes+broas);
 total= paes*0.12 + broas*1.50;
 printf("\nValor Arrecadado %.2f$",total);
 porce = total*10/100;
-printf("\nTotal a ser colocado na pupança  é : %.2f Porcento", porce);
+printf("\nTotal a ser colocado na pupança  é : %.2f Porcento", porce
