@@ -1,0 +1,114 @@
+#Q1
+#include<stdio.h> 
+int main() 
+{ 
+//---------------------------------    
+ int num, total = 0, media = 0; //variáveis 
+printf("\n\tCalculo da média dos valores");
+
+ //---------------------------------
+     for(int i=0; i<10; i++){
+        printf("\nInsira o %dº o numero : ",i+1); 
+        scanf("%d", &num); 
+        total = total + num;
+    } 
+media = total /10;
+printf("\n\tA média dos valores é :%d", media);
+
+ return 0;
+}
+
+#Q2
+#include<stdio.h> 
+int main() 
+{ 
+ int num, maior,menor; //variáveis 
+ int i; 
+printf("\n\tCalculo do menor e maior número");
+
+ printf("\n\nEntre com o 1º numero : "); 
+ scanf("%d", &num); 
+ maior=num; 
+ menor=num; 
+ 
+    for(i=1; i<10; i++){
+        
+        printf("\nEntre com o %dº o numero : ",i+1); 
+        scanf("%d", &num); 
+        if(num>maior) 
+        maior=num; 
+        else 
+        if(num<menor) 
+        menor=num; 
+ } 
+ printf("\nO menor número entrado é: %d",menor); 
+ printf("\nO maior número entrado é: %d",maior); 
+ return 0;
+}
+
+#Q3
+#include <stdio.h> 
+#define TAM 10
+
+
+
+void main(void)
+
+{ 
+    int x[TAM], y[TAM], tam2 = 2 * TAM, xy[tam2];
+   printf("\nDigite 10 valores para x e y");
+    for (int i = 0; i <TAM; i++){
+        printf("\nDigite 10 valores para x %dº número:  ", i+1);
+        scanf("%d", &x[i]);
+    } 
+
+    for (int i = 0; i <TAM; i++){ 
+        printf("Digite 10 valores para y %dº número:  ", i+1);
+        scanf("%d", &y[i]);
+        
+    }
+
+    for (int i = 0; i < TAM;i++){ 
+        xy[i] = x[i]; 
+        xy[i+10] = y[i];
+        
+    }
+
+    printf("Resultado: "); 
+    for (int i = 0; i< tam2; i++){ 
+        printf("%d\n", xy[i]);
+    }
+
+}
+
+#Q4
+#include <stdio.h>
+
+int main()
+{
+ printf("\n\tCalculos de vetores");
+int num[8],n_positivos[8], n_negativos[8];
+printf("\nInsire 8 números\n");
+    
+    for (int i = 0; i<8; i++){
+        printf("Insira números %d: ", i+1);
+        scanf("%d", &num[i]);
+    }
+    
+    for (int i = 0 ; i< 8; i++){
+        if(num[i] > 0){
+            n_positivos[i] = num[i];
+            printf("%d\n", n_positivos[i]);
+        }
+    }
+    
+    for (int i = 0 ; i< 8; i++){
+        if(num[i] < 0){
+            n_negativos[i] = num[i];
+            printf("\n%d", n_negativos[i]);
+        }
+    }
+    
+
+    return 0;
+}
