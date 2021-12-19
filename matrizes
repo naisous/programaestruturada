@@ -1,0 +1,181 @@
+1) Escreva um programa que recebe um matriz 3x4 do usuário e escreve a média dos valores na matriz.
+ #include <stdio.h>
+#define TAM_L 3
+#define TAM_C 4
+
+int main()
+{
+    int total = 0, b ;
+    int mat_m[TAM_L][TAM_C];
+    printf("Insira valores para cada elemento de uma matrix %dx%d:\n", TAM_L, TAM_C);
+    for (int i = 0; i < TAM_L; i++) {
+        for (int j = 0; j < TAM_C; j++) {
+            printf("mat[%d][%d]= ",i, j);
+            scanf("%d", &mat_m[i][j]);
+        }
+    }
+    printf("A sua matriz digitado é: \n");
+    for (int i = 0; i < TAM_L; i++) {
+        for (int j = 0; j < TAM_C; j++) {
+        printf("%d\t",mat_m[i][j]);
+        total += mat_m[i][j];
+        }
+     printf("\n");
+    }
+    printf("A média dos valores da matriz inseridos é :%d", total);
+     
+     
+    return 0;
+}
+
+   2) Escreva um programa que recebe uma matriz 2x3 do usuário e diga qual o maior número e qual o menor número da matriz.
+   
+   #include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+        int lin,col;
+        int mat[2][3];
+        int menor=0;
+        int maior=0;
+        printf("Preencha os elementos da matrix 2x3");
+        for(lin=0; lin<=2; lin++){
+            for(col=0; col<=2; col++)
+			{
+			    
+                printf("\nLinha [%d] Coluna [%d]: ", lin+1, col+1);
+                scanf("%d", &mat[lin][col]);
+
+            }
+            printf("\n");
+        }
+//resulta da matriz inserida
+        printf("\n\tMatriz\n\n");
+        for(lin=0; lin<=2; lin++)
+		{
+            for(col=0; col<=2; col++){
+                printf("%d\t ", mat[lin][col]);
+            }
+            printf("\n\n");
+        }
+//mostrar o menor valor
+menor = mat[0][0];
+for(lin=0; lin<=2; lin++){
+            for(col=0; col<=2; col++){
+                
+                if(mat[lin][col] < menor)
+                
+				{
+                    menor = mat[lin][col];
+                    
+                }
+                
+            }
+//maior valor
+maior = mat[0][0];
+for(lin=0; lin<=2; lin++){
+            for(col=0; col<=2; col++){
+                
+                if(mat[lin][col] > maior)
+                
+				{
+                    maior = mat[lin][col];
+                    
+                }
+                
+            }
+        }
+printf("\n O número menor é: [%d]", menor);
+printf("\n o número maior é: [%d]", maior);
+        
+        printf("\n\n");
+
+        return 0;
+}
+}
+
+
+   3) Faça um programa que preencha dois vetores, X e Y, com dez números inteiros cada. Mova os valores desses vetores para uma matriz 2x10 e mostre os valores da matriz.
+#include <stdio.h>
+#define TAM_L 2
+#define TAM_C 10
+
+int main()
+{
+    printf ("\t ##-Verificação dos valoes dos vetores da matriz!-##");
+    
+    int mat [TAM_L][TAM_C], y [TAM_C], x [TAM_C];
+    
+    printf("\nInsira os dez valores do primeiro vetor:");
+    
+    for (int i =0; i<TAM_C; i++){
+        scanf("%d",& x[i]);
+    }
+     printf("\nInsira os dez valores do segundo vetor:");
+     
+    for (int i =0; i<TAM_C; i++){
+        scanf("%d",& y[i]);
+    }
+    
+    for (int i= 0; i<TAM_L; i++){
+        for (int j= 0; j<TAM_C; j++){
+            mat[i][j]=x[j];
+        }
+    }
+    
+    for (int i= 1; i<TAM_L; i++){
+        for (int j= 0; j<TAM_C; j++){
+            mat[i][j]=y[j];  
+        }
+    }
+    
+    printf("\n A matriz gerada é: \n");
+    
+    for (int i= 0; i<TAM_L; i++){
+        for (int j= 0; j<TAM_C; j++){
+           printf("%d\t", mat [i][j]);
+        }
+        printf("\n");
+    }
+    return 0;  
+}
+   4) Faça um programa que preencha uma matriz 4x2 com valores inteiros, calcule e mostre dois vetores resultantes. O primeiro vetor resultante deve conter os números positivos; o segundo deve conter os números negativos. Cada vetor resultante vai ter, no máximo, oito posições, que poderão não ser completamente utilizadas.
+   
+   #include <stdio.h>
+#define TAM_L 4
+#define TAM_C 2
+int main()
+{
+   int mat [TAM_L][TAM_C], x [TAM_C],y [TAM_C];
+   
+   printf("\nInsira a matriz:");
+   
+   for(int i = 0; i < TAM_L; i++){
+      for  (int j = 0; j < TAM_C;j++){
+          scanf("%d",& mat [i][j]);
+      } 
+   }
+   printf("\nO vetor resultante dos numeros positivos sera:");
+   
+   for(int i = 0; i < TAM_L; i++){
+      for  (int j = 0; j < TAM_C;j++){
+          if (mat [i][j]>0){
+              x[i]= mat [i][j];
+              printf("%d\t",x[i]);
+          }
+      } 
+   }
+    printf("\nO vetor resultante dos numeros negativos sera:\n");
+   
+   for(int i = 0; i < TAM_L; i++){
+      for  (int j = 0; j < TAM_C;j++){
+          if (mat [i][j]<0){
+              y[i]= mat [i][j];
+              printf("%d\t",y[i]);
+          }
+      } 
+   } 
+
+    return 0;
+}
