@@ -1,0 +1,199 @@
+//Aluno: Naira Rodrigues de Sousa de Oliveira*/
+/*1) A prefeitura de uma cidade fez uma pesquisa entre seus habitantes, coletando dados sobre salário, idade e número de filhos.
+Faça um programa que leia esses dados de 20 pessoas, calcule e mostre: 
+a) a média de salário da população;
+b) a média do número de filhos;
+c) o maior salário;
+d) o percentual de mulheres com salário superior a R$1000,00.
+*/
+#include <stdio.h>
+#define QUAT_P 20
+
+typedef struct{
+    float salario;
+    int idade;
+    int q_filhos;
+    char sexo;
+} habitantes;
+
+void main(void)
+{
+   habitantes hab[QUAT_P];
+   float media_salario = 0, m_filhos = 0, maior_salario = 0;
+   int cont_n_mulheres = 0;
+   
+   printf("Preencha os dados dos habitantes a seguir \n");
+   
+   for(int i = 0; i < QUAT_P; i++){
+       
+       printf("\n## Habitante ## %d\n",i+1);
+       printf("\n Seu Salário: ");
+       scanf("%f", &hab[i].salario);
+       printf("\nSua Idade: ");
+       scanf("%d", &hab[i].idade);
+       printf("\nQuantos filhos você tem: ");
+       scanf("%d", &hab[i].q_filhos);
+       printf("\nQual seu sexo M para (Masculino) ou F para (Feminino) ");
+       printf("\nSexo: ");
+       scanf("%s", &hab[i].sexo);
+       printf("\n\n");
+       
+       if(hab[i].salario > maior_salario){
+           maior_salario = hab[i].salario;
+       }
+       
+       if(hab[i].sexo == 'F' && hab[i].salario > 1000){
+           cont_n_mulheres = cont_n_mulheres + 1;
+       }
+       
+       media_salario = media_salario + hab[i].salario;
+       m_filhos = m_filhos + hab[i].q_filhos;
+   }
+   
+   for(int i = 0; i < QUAT_P; i++){
+       printf("Seu salario: %0.2f reais\n", hab[i].salario);
+       printf("Sua idade é: %d anos\n", hab[i].idade);
+       printf("Você tem: %d filhos\n", hab[i].q_filhos);
+       printf("Você é do sexo: %c\n", hab[i].sexo);
+       printf("\n");
+   }
+   
+   printf("A média salarial da população é de: R$ %0.2f reais\n", media_salario/QUAT_P);
+   printf("A média de filhos da população é de: %0.1f filhos\n", m_filhos/QUAT_P);
+   printf("O maior salário é: R$ %0.2f reais\n", maior_salario);
+   printf("%d%% das mulheres tem o salário superior a R$ 1000,00 reais", (cont_n_mulheres*100)/QUAT_P);
+}
+
+2) Faça um programa que realize o cadastro de contas bancárias com as seguintes informações: 
+número da conta, nome do cliente e saldo. 
+O banco permitirá o cadastramento de apenas quinze contas e não poderá haver mais que uma conta com o mesmo número. 
+Crie o menu de opções a seguir: 
+1. Cadastrar contas; 
+2. Visualizar todas as contas de determinado cliente; 
+3. Excluir ultima conta da lista; 4. Sair.
+
+/*Francisco Alison Lima Cruz
+2) Faça um programa que realize o cadastro de contas bancárias com as seguintes informações: 
+número da conta, nome do cliente e saldo. 
+O banco permitirá o cadastramento de apenas quinze contas e não poderá haver mais que uma conta com o mesmo número. 
+Crie o menu de opções a seguir: 
+1. Cadastrar contas; 
+2. Visualizar todas as contas de determinado cliente; 
+3. Excluir ultima conta da lista; 4. Sair.*/
+
+
+#include <stdio.h>
+
+/* Constantes */
+#define Q_CONTAS 100    /* Quantidade maxima de contas */
+
+/* Tipos */
+struct conta
+{
+  int numero;
+  float dinheiro;
+};
+
+/* Menu principal */
+int Menu(void)
+{
+  int opcao;
+  do
+  {
+    printf("1 - Cadastrar nova conta\n");
+    printf("2 - Listar todas as contas criadas\n");
+    printf("3 - Excluir a última conta\n");
+    printf("4 - Sair\n");
+    printf("Digite a opcao que deseja prosseguir: ");
+    scanf("%i%*c",&opcao);
+    if(opcao<1||opcao>4)
+    {
+      printf("\nOpção invalida.");
+      printf("\nPressione enter para continuar.\n");
+    }
+  /* Enquanto opcao for menor do que 1 ou opcao for maior do que 6 */
+  }while(opcao<1||opcao>6);
+  return(opcao);
+}
+
+int main(void)
+{
+  int d,n,quant;    /* Proposito geral */
+  int contas_usadas=0;    /* Numero de contas usadas */
+  int opcao;    /* utilizado para pegar as opções da função Menu() */
+  struct conta contas[Q_CONTAS];    /* Vai guardar as informações das contas */
+  /* Inicia todas as contas */
+  for(d=0; d<Q_CONTAS; d++)
+  {
+    contas[d].numero=0;
+    contas[d].dinheiro=0;
+  }
+  /* Loop principal */
+  do
+  {
+    opcao=Menu();
+    switch(opcao)
+    {
+      /* Cadastra novas contas */
+      case 1:
+        do
+        {
+          quant=0;
+          /* Checa se há contas disponiveis */
+          if(contas_usadas<Q_CONTAS)
+          {
+            printf("\nDigite o numero para a nova conta:\t");
+            scanf("%i%*c",&n);
+            /* Checa se a conta já existe */
+            for(d=0; d<Q_CONTAS; d++)
+            {
+              if(contas[d].numero==n)
+              {
+                quant++;
+              }
+            }
+            if(quant>0)
+            {
+              printf("\nA conta já existe.");
+              printf("\nDigite outro numero para a conta.");
+            }
+            else
+            {
+              contas[contas_usadas].numero=n;   /* Passa o numero da conta */
+              contas_usadas++;    /* Registra a quantidade de contas usadas */
+              printf("\nConta criada com sucesso.\n");
+              printf("\nPressione enter para continuar.\n\n");
+              getchar();      /* Pausa */
+            }
+          }
+          else
+          {
+            printf("\nNão há mais contas disponiveis no banco!\n");
+            printf("\nPressione enter para continuar.\n");
+            getchar();      /* Pausa */
+          }
+        /* Repete se a conta já existir */
+        }while(quant>0);
+      break;
+      /* Mostra as contas cadastradas */
+      case 2:
+        /* Checa se há contas no sistema */
+        if(contas_usadas>0)
+        {
+          for(d=0; d<contas_usadas; d++)
+          {
+            printf("\nNumero da conta:\t%i",contas[d].numero);
+            printf("\nDinheiro na conta:\t%.2f\n",contas[d].dinheiro);
+          }
+        }
+        else
+        {
+          printf("\nNão há contas registradas.");
+        }
+        printf("\nPressione enter para continuar.\n");
+        getchar();    /* Pausa */
+      break;
+    }
+  }while(opcao!=4);
+  return(0);
+}
